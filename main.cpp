@@ -1,6 +1,11 @@
-/* 
- * your comment header here
- */
+/***************************************************************************
+Name: Natalia Ksenz
+Coding 06
+Purpose: The assignment to create a Hash Table class/object with standard
+structure.
+
+File: main.h
+***************************************************************************/
 
 #include "main.h"
 
@@ -17,7 +22,7 @@ int main() {
     const int testdatasize = BASE + (rand() % OFFSET + 1);
     int ids[testdatasize];
     string strs[testdatasize];
-    
+
     char buffer[BUFFERSIZE];
     for (int i = 0; i < testdatasize; i++) {
         ids[i] = rand() % MAXID + 1;
@@ -31,7 +36,7 @@ int main() {
     strs[testdatasize-2] = "known duplicate";
     ids[testdatasize-1] = - 1;
     strs[testdatasize-1] = "known bad";
-    
+
     /*
      * Show test data
      */
@@ -46,20 +51,20 @@ int main() {
      * START HERE and create your hash table and use the test data to show
      * it works.
      */
-    
+
     // create your hash table object here
-    
+
     // show it is empty by calling getCount and printTable
-    
+
     // try and put ALL the test data into the table and show what happens
 
     // continue using and testing your table, add and remove data,
     // do whatever it takes to full test your object and prove it
     // is robust and can handle all use cases.
 
-    
-    
-    
-    
+
+
+
+
     return 0;
 }
