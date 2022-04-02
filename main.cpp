@@ -4,7 +4,7 @@ Coding 06
 Purpose: The assignment to create a Hash Table class/object with standard
 structure.
 
-File: main.h
+File: main.cpp
 ***************************************************************************/
 
 #include "main.h"
@@ -53,10 +53,27 @@ int main() {
      */
 
     // create your hash table object here
+    cout << "Creating a hashtable...";
+    Hashtable hashtable;
+    cout << "done" << endl << endl;
 
     // show it is empty by calling getCount and printTable
+    cout << "Checking the hashtable...\n";
+    cout << "There are " << hashtable.getCount() << " entries in the table." << endl << endl;
+    hashtable.printTable();
+    cout << endl;
 
     // try and put ALL the test data into the table and show what happens
+    cout << "Inserting Test Data..." << endl;
+    for (int i = 0; i < testdatasize; i++) {
+        if (hashtable.insertEntry(ids[i], &strs[i])) {
+            cout << "success. entry inserted." << endl;
+            cout << "There are " << hashtable.getCount() << " entries in the table." << endl << endl;
+        } else {
+            cout << "failed." << endl;
+        }
+    }
+    cout << endl;
 
     // continue using and testing your table, add and remove data,
     // do whatever it takes to full test your object and prove it
