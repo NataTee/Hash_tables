@@ -11,7 +11,8 @@ File: hashtable.h
 #define HASHTABLE_HASHTABLE_H
 
 #include <iostream>
-#include "data.h"
+#include <string>       /* string */
+#include "linkedlist.h"
 
 #define HASHTABLESIZE 15
 
@@ -22,9 +23,8 @@ class Hashtable {
 
 public:
     Hashtable();
-    ~Hashtable();
 
-    bool insertEntry(int, string);
+    bool insertEntry(int, string*);
     string getData(int);
     bool removeEntry(int);
     int getCount();
@@ -34,7 +34,7 @@ public:
 
     int hash(int);
 
-    Data *hashtable[HASHTABLESIZE];
+    LinkedList *hashtable[HASHTABLESIZE];
     int count;
 };
 
