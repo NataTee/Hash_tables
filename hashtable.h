@@ -23,6 +23,7 @@ class Hashtable {
 
 public:
     Hashtable();
+    ~Hashtable();
 
     bool insertEntry(int, string*);
     string getData(int);
