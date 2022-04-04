@@ -67,21 +67,107 @@ int main() {
     cout << "Inserting Test Data..." << endl;
     for (int i = 0; i < testdatasize; i++) {
         if (hashtable.insertEntry(ids[i], &strs[i])) {
-            cout << "success. entry inserted." << endl;
-            cout << "There are " << hashtable.getCount() << " entries in the table." << endl << endl;
+            cout << "Adding id: " << ids[i] << ", data: " << strs[i] << endl;
+            cout << "Entry inserted successfully." << endl;
         } else {
-            cout << "failed." << endl;
+            cout << "Adding id: " << ids[i] << ", data: " << strs[i] << endl;
+            cout << "Entry is not added." << endl;
         }
     }
     cout << endl;
 
-    // continue using and testing your table, add and remove data,
-    // do whatever it takes to full test your object and prove it
-    // is robust and can handle all use cases.
+    cout << "There are " << hashtable.getCount() << " entries in the table." << endl;
+    hashtable.printTable();
 
+    //randomly getting a few nodes
+    cout << "\nTrying to insert few more nodes..." << endl;
+    for (int i = 0; i < testdatasize; i+=3) {
+        if (hashtable.insertEntry(ids[i], &strs[i])) {
+            cout << "Adding id: " << ids[i] << ", data: " << strs[i] << endl;
+            cout << "Entry inserted successfully." << endl;
+        } else {
+            cout << "Adding id: " << ids[i] << ", data: " << strs[i] << endl;
+            cout << "Entry is not added." << endl;
+        }
+    }
+    cout << endl;
 
+    cout << "There are " << hashtable.getCount() << " entries in the table." << endl;
+    hashtable.printTable();
+    cout << endl;
 
+    //randomly checking 5 nodes
+    cout << "Checking data associated with id..." << endl;
+    for (int i = 0; i < 5; i++) {
+        int getid = rand() % MAXID + 1;
+        cout << "Id: " << getid;
+        cout << " , data: " << hashtable.getData(getid) << endl;
+    }
+    cout << endl;
 
+    //deleting from the table random ids
+    cout << "Trying to delete random id..." << endl;
+    for (int i = 0; i < (testdatasize/3); i++) {
+        int delid = rand() % MAXID + 1;
+        cout << "Deleting " << delid << "... ";
+        if (hashtable.removeEntry(delid)) {
+            cout << "success" << endl;
+        } else {
+            cout << "failed" << endl;
+        }
+    }
+    cout << endl;
+
+    cout << "Checking the hashtable...\n";
+    cout << "There are " << hashtable.getCount() << " entries in the table." << endl << endl;
+    hashtable.printTable();
+    cout << endl;
+
+    //removing every second node from the table
+    for (int i = 0; i < testdatasize; i+=2) {
+        cout << "Deleting " << ids[i] << "... ";
+        if (hashtable.removeEntry(ids[i])) {
+            cout << "success" << endl;
+        } else {
+            cout << "failed" << endl;
+        }
+    }
+    cout << endl;
+    cout << "There are " << hashtable.getCount() << " entries in the table." << endl << endl;
+
+    cout << "Inserting new data..." << endl;
+    for (int i = 0; i < testdatasize; i+=3) {
+        if (hashtable.insertEntry(ids[i], &strs[i])) {
+            cout << "Adding id: " << ids[i] << ", data: " << strs[i] << endl;
+            cout << "Entry inserted successfully." << endl;
+        } else {
+            cout << "Adding id: " << ids[i] << ", data: " << strs[i] << endl;
+            cout << "Entry is not added." << endl;
+        }
+    }
+    cout << endl;
+
+    cout << "Checking the hashtable...\n";
+    cout << "There are " << hashtable.getCount() << " entries in the table." << endl << endl;
+    hashtable.printTable();
+    cout << endl;
+
+    //removing all the data from the table
+    cout << "Removing all entries from the table..." << endl;
+    for (int i = 0; i < testdatasize; i++) {
+        cout << "Deleting " << ids[i] << "... ";
+        if (hashtable.removeEntry(ids[i])) {
+            cout << "success" << endl;
+        } else {
+            cout << "failed" << endl;
+        }
+    }
+    cout << endl;
+
+    cout << "Checking the hashtable...\n";
+    cout << "There are " << hashtable.getCount() << " entries in the table." << endl << endl;
+    hashtable.printTable();
+    cout << endl;
 
     return 0;
 }
