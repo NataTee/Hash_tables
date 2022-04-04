@@ -29,7 +29,7 @@ File: linkedlist.h
      bool addNode(int, string*);
      bool deleteNode(int);
      bool getNode(int, Data*);
-     bool printList(int);
+     bool printList();
      int getCount();
      bool clearList();
      bool exists(int);
