@@ -18,25 +18,21 @@ LinkedList::~LinkedList() {
 }
 
 bool LinkedList::addNode(int id, string *info) {
-    bool added = false;
+    bool added;
     if(id > 0 && *info != ""){
         if (head != NULL) {
             Node *current = head;
-            while ((current->data.id < id) && (current->next != NULL)) {
+            while ((current->next != NULL) && (current->data.id != id)) {
                 current = current->next;
             }
-            if (current->data.id != id) {
+            if (current->data.id == id) {
+                added = false;
+            }
+            else {
                 Node *newNode = new Node;
                 fillIt(id, info, newNode);
-                if ((current->next == NULL) && (current->data.id < id)) {
-                    addTail(current, newNode, added);
-                }
-                else if ((current->data.id > id) && (current->prev == NULL)) {
-                    addHead(head, newNode, added);
-                }
-                else {
-                    addMiddle(current, newNode, added);
-                }
+                addTail(current, newNode, added);
+                added = true;
             }
         }
         else {
@@ -81,33 +77,34 @@ bool LinkedList::deleteNode(int id) {
 bool LinkedList::getNode(int id, Data *data) {
     bool found = false;
     Node *current = head;
-    while ((current->data.id != id) && (current->next != NULL)) {
-        current = current->next;
-    }
-    if (current->data.id == id) {
-        data->id = current->data.id;
-        data->data = current->data.data;
-        found = true;
-    }
-    else {
-        data->id = -1;
-        data->data = "";
+    if (current != NULL) {
+        while ((current->data.id != id) && (current->next != NULL)) {
+            current = current->next;
+        }
+        if (current->data.id == id) {
+            data->id = current->data.id;
+            data->data = current->data.data;
+            found = true;
+        }
+        else {
+            data->id = -1;
+            data->data = "";
+        }
     }
     return found;
 }
 
-bool LinkedList::printList(int i) {
+bool LinkedList::printList() {
     Node *current = head;
     if (current == NULL) {
-        cout << "Table Entry " << i << ": EMPTY" << endl;
+        cout << "EMPTY";
     }
     else {
-        cout << "Table Entry " << i << ": " << current->data.id;
+        cout << current->data.id;
         while(current->next){
             current = current->next;
             cout << " --> " << current->data.id;
         }
-        cout << endl;
     }
     return true;
 }
