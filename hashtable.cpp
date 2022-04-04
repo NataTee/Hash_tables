@@ -16,6 +16,14 @@ Hashtable::Hashtable() {
     }
 }
 
+Hashtable::~Hashtable() {
+    for (int i = 0; i < HASHTABLESIZE; i++) {
+        if (hashtable[i]) {
+            delete hashtable[i];
+        }
+    }
+}
+
 int Hashtable::hash(int id) {
     // guarantees a position between 0 and HASHTABLESIZE - 1
     return id % HASHTABLESIZE;
