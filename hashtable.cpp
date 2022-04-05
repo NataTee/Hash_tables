@@ -43,23 +43,21 @@ bool Hashtable::insertEntry(int id, string *data) {
 
 bool Hashtable::removeEntry(int id) {
     bool del = false;
-    for (int i = 0; i < HASHTABLESIZE; i++) {
-        if (hashtable[i]->deleteNode(id)) {
-            del = true;
-            count--;
-        }
+    int position = hash(id);
+    if ((position > -1) && (hashtable[position]->deleteNode(id))) {
+        del = true;
+        count--;
     }
     return del;
 }
 
 string Hashtable::getData(int id) {
     string ret = "";
+    int position = hash(id);
     //making temporary data holder for testing
     Data tmpData;
-    for (int i = 0; i < HASHTABLESIZE; i++) {
-        if (hashtable[i]->getNode(id, &tmpData)) {
-            ret = tmpData.data;
-        }
+    if (hashtable[position]->getNode(id, &tmpData)) {
+        ret = tmpData.data;
     }
     return ret;
 }
